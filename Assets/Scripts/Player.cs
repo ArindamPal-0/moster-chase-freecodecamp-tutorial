@@ -41,11 +41,11 @@ public class Player : MonoBehaviour
     {
         PlayerMoveKeyboard();
         AnimatePlayer();
+        PlayerJump();
     }
 
     private void FixedUpdate()
     {
-        PlayerJump();
     }
 
     void PlayerMoveKeyboard()
