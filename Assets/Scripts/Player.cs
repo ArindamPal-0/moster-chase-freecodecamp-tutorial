@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     private bool isGrounded;
     private string GROUND_TAG = "Ground";
 
+    private string ENEMY_TAG = "Enemy";
+
     private void Awake()
     {
         myBody = GetComponent<Rigidbody2D>();
@@ -89,8 +91,15 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag(GROUND_TAG))
-        {
             isGrounded = true;
-        }
+
+        if(collision.gameObject.CompareTag(ENEMY_TAG))
+            Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag(ENEMY_TAG))
+            Destroy(gameObject);
     }
 }
